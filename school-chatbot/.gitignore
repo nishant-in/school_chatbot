@@ -1,0 +1,15 @@
+# Environment Variables
+.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+venv2/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+models.txt

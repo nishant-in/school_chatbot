@@ -1,0 +1,246 @@
+:root {
+    --primary-color: #FF6B6B;
+    --secondary-color: #4ECDC4;
+    --accent-color: #FFE66D;
+    --text-color: #2C3E50;
+    --bg-color: #F7F9FC;
+    --message-bg-bot: #E0F7FA;
+    --message-bg-user: #FFF9C4;
+}
+
+body {
+    font-family: 'Comic Neue', cursive;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(#E0E0E0 1px, transparent 1px);
+    background-size: 20px 20px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-color);
+}
+
+.main-container {
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    border: 5px solid white;
+}
+
+header {
+    background: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 3rem;
+    margin-bottom: 5px;
+    animation: bounce 2s infinite;
+}
+
+h1 {
+    font-family: 'Fredoka', sans-serif;
+    margin: 0;
+    font-size: 2rem;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.chat-messages {
+    flex: 1;
+    min-height: 0;
+    /* Important for firefox/flex containers */
+    padding: 20px;
+    overflow-y: scroll;
+    /* Forces scrollbar to be always visible */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    max-width: 80%;
+    padding: 15px 20px;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    position: relative;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: var(--message-bg-bot);
+    border-bottom-left-radius: 5px;
+    border: 2px solid #B2EBF2;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: var(--message-bg-user);
+    border-bottom-right-radius: 5px;
+    border: 2px solid #FFF176;
+}
+
+.input-area {
+    padding: 20px;
+    background: #fff;
+    border-top: 2px solid #eee;
+    display: flex;
+    gap: 10px;
+}
+
+#user-input {
+    flex: 1;
+    padding: 15px;
+    border: 3px solid #ddd;
+    border-radius: 50px;
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#user-input:focus {
+    border-color: var(--secondary-color);
+}
+
+#send-btn {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0 25px;
+    border-radius: 50px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+#send-btn:hover {
+    background: #3ebcb3;
+    transform: scale(1.05);
+}
+
+#send-btn:active {
+    transform: scale(0.95);
+}
+
+/* Animations */
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Scroll Controls */
+.scroll-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.scroll-btn {
+    position: static;
+    /* Reset absolute since parent is fixed */
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-btn.secondary {
+    background: var(--secondary-color);
+}
+
+.scroll-btn:hover {
+    transform: scale(1.1);
+}
+
+.scroll-btn.hidden {
+    display: none;
+    /* simple hide */
+}
+
+/* Typing Effect */
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background: var(--text-color);
+    animation: blink 1s infinite;
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Scrollbar */
+.chat-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #999;
+    /* Darker for better visibility */
+    border-radius: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
